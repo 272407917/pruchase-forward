@@ -15,8 +15,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(String id, String username, String password, String rule, String email, String qq) {
-        this.id = id;
+    public Users(String username, String password, String rule, String email, String qq) {
         this.username = username;
         this.password = password;
         this.rule = rule;

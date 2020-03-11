@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -66,16 +67,13 @@
 		<div class="box">
  			<div class="box_1">
   				<div id="category_tree">
+					<c:forEach items="${goodTypeList}" var="type">
          			<dl>
      					<dt>
-							<a href="category.php-id=12.htm">类别1</a>
+							<a href="goodSvl?reqType=main&pageNow=1&goodType=${type}">${type}</a>
 						</dt>
 	       			</dl>
-					<dl>
-     					<dt>
-							<a href="category.php-id=12.htm">类别2</a>
-						</dt>
-	       			</dl>
+					</c:forEach>
   				</div>
  			</div>
 		</div>
@@ -88,28 +86,22 @@
   				<div class="itemTit" id="itemBest"></div>
   				<div id="show_best_area" class="clearfix goodsBox">
 					<!--单个商品展示信息-->
+					<c:forEach items="${goodsByTypeList}" var="goods">
       				<div class="goodsItem">
          				<span class="best"></span>
            				<a href="flow.jsp">
-							<img src="" alt="测试商品1" class="goodsimg" /></a>
-           				<p><a href="flow.jsp" title="测试商品1">测试商品1</a></p>
-           				<font class="f1">￥55元</font>
+							<img src="goodSvl?reqType=downImg&filename=${goods.pic}" alt="测试商品1" class="goodsimg" /></a>
+           				<p><a href="flow.jsp" title="测试商品1">${goods.goodname}</a></p>
+           				<font class="f1">￥${goods.price}元</font>
         			</div>
-        			<div class="goodsItem">
-         				<span class="best"></span>
-           				<a href="flow.jsp">
-							<img src="" alt="测试商品1" class="goodsimg" /></a>
-           				<p><a href="flow.jsp" title="测试商品1">测试商品1</a></p>
-           				<font class="f1">￥55元</font>
-        			</div>
-        			<div class="goodsItem">
-         				<span class="best"></span>
-           				<a href="flow.jsp">
-							<img src="" alt="测试商品1" class="goodsimg" /></a>
-           				<p><a href="flow.jsp" title="测试商品1">测试商品1</a></p>
-           				<font class="f1">￥55元</font>
-        			</div>
-    				<div class="more"><a href="###"><img src="images/more.gif" /></a></div>
+					</c:forEach>
+    				<div class="more">
+						<a href="goodSvl?reqType=main&pageNow=1">首页</a>
+						<a href="goodSvl?reqType=main&pageNow=${pageNow-1}&goodType=${param.goodType}">上一页</a>
+					    <a href="goodSvl?reqType=main&pageNow=${pageNow+1}&goodType=${param.goodType}">下一页</a>
+						<a href="###"><img src="images/more.gif" /></a>
+					</div>
+
     			</div>
 			</div>
 		</div>

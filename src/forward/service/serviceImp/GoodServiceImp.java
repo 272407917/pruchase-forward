@@ -12,4 +12,16 @@ import java.util.List;
  */
 public class GoodServiceImp implements GoodService {
 
+    private GoodDao goodDao = new GoodDao();
+
+    @Override
+    public List<String> findAllGoodType() {
+        return goodDao.findAllGoodType();
+    }
+
+    @Override
+    public List<Goods> findGoodsByType(String type, int pageNow, int pageSize) {
+        return goodDao.findGoodsByType(type,pageNow,pageSize);
+    }
+
 }
